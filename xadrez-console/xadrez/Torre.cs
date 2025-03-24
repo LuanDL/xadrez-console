@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using tabuleiro;
+﻿using tabuleiro;
 
 namespace xadrez
 {
@@ -36,14 +31,11 @@ namespace xadrez
             while (tab.posicaoValida(pos) && podeMover(pos))
             {
                 mat[pos.linha, pos.coluna] = true;
-                if (tab.peca(pos) != null && podeMover(pos))
+                if (tab.peca(pos) != null && tab.peca(pos).cor != cor)
                 {
-                    mat[pos.linha, pos.coluna] = true; 
-                    {
-                        break;
-                    }
-                    pos.linha = pos.linha - 1;
+                    break;
                 }
+                pos.linha = pos.linha - 1;
             }
 
             //abaixo
@@ -51,29 +43,23 @@ namespace xadrez
             while (tab.posicaoValida(pos) && podeMover(pos))
             {
                 mat[pos.linha, pos.coluna] = true;
-                if (tab.peca(pos) != null && podeMover(pos))
+                if (tab.peca(pos) != null && tab.peca(pos).cor != cor)
                 {
-                    mat[pos.linha, pos.coluna] = true;
-                    {
-                        break;
-                    }
-                    pos.linha = pos.linha + 1;
+                    break;
                 }
+                pos.linha = pos.linha + 1;
             }
 
             //direita
-            pos.definirValores(posicao.linha, posicao.coluna+1);
+            pos.definirValores(posicao.linha, posicao.coluna + 1);
             while (tab.posicaoValida(pos) && podeMover(pos))
             {
                 mat[pos.linha, pos.coluna] = true;
-                if (tab.peca(pos) != null && podeMover(pos))
+                if (tab.peca(pos) != null && tab.peca(pos).cor != cor)
                 {
-                    mat[pos.linha, pos.coluna] = true;
-                    {
-                        break;
-                    }
-                    pos.coluna = pos.coluna + 1;
+                    break;
                 }
+                pos.coluna = pos.coluna + 1;
             }
 
             //esquerda
@@ -81,19 +67,13 @@ namespace xadrez
             while (tab.posicaoValida(pos) && podeMover(pos))
             {
                 mat[pos.linha, pos.coluna] = true;
-                if (tab.peca(pos) != null && podeMover(pos))
+                if (tab.peca(pos) != null && tab.peca(pos).cor != cor)
                 {
-                    mat[pos.linha, pos.coluna] = true;
-                    {
-                        break;
-                    }
-                    pos.coluna = pos.coluna - 1;
+                    break;
                 }
+                pos.coluna = pos.coluna - 1;
             }
-
-
-
             return mat;
         }
-        }
     }
+}

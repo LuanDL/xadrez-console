@@ -1,16 +1,12 @@
-﻿
-using System.Net.NetworkInformation;
-using tabuleiro;
-
-namespace tabuleiro
+﻿namespace tabuleiro
 {
-    internal class Tabuleiro
+    class Tabuleiro
     {
         public int linhas { get; set; }
         public int colunas { get; set; }
         private Peca[,] pecas;
 
-        public Tabuleiro (int linhas, int colunas)
+        public Tabuleiro(int linhas, int colunas)
         {
             this.linhas = linhas;
             this.colunas = colunas;
@@ -22,7 +18,7 @@ namespace tabuleiro
             return pecas[linha, coluna];
         }
 
-        public Peca peca (Posicao pos)
+        public Peca peca(Posicao pos)
         {
             return pecas[pos.linha, pos.coluna];
         }
@@ -57,7 +53,7 @@ namespace tabuleiro
 
         public bool posicaoValida(Posicao pos)
         {
-            if (pos.linha < 0 || pos.linha >= linhas || pos.coluna >= colunas)
+            if (pos.linha < 0 || pos.linha >= linhas || pos.coluna < 0 || pos.coluna >= colunas)
             {
                 return false;
             }
@@ -68,7 +64,7 @@ namespace tabuleiro
             if (!posicaoValida(pos))
             {
                 throw new TabuleiroException("Posição Inválida!");
-        } 
+            }
         }
     }
 }
